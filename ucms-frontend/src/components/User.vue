@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <h2>This a User Page</h2>
-    <el-button type="primary" @click="showUser()">查看用户</el-button>
-    {{users}}
-  </div>
+  <el-container>
+    <el-header>
+      <h2>This a User Page</h2>
+    </el-header>
+    <el-main>
+      <el-button type="primary" @click="showUser()">ShowUser</el-button>
+      {{users}}
+    </el-main>
+  </el-container>
 </template>
 
 <script>
