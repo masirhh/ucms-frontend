@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <User />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import User from "./components/User";
+
 export default {
   name: "app",
   components: {
-    User
+
   }
 };
 </script>
 
 <style>
+#app{
+  min-width: 1414px;
+}
 </style>
