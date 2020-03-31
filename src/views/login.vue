@@ -28,7 +28,7 @@
 
 <script>
 import { reqUser } from "../network";
-import ufooter from "../components/uFooter"
+import ufooter from "../components/footer/uFooter"
 
 export default {
   name: "ulogin",
