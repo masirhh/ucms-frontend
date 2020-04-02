@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="banner">
-      <img class="center" src="../assets/ubanner.png" alt />
-    </div>
+    <uheader />
     <div class="login">
       <el-divider>
         <span class="login-text">登录</span>
@@ -27,8 +25,9 @@
 </template>
 
 <script>
-import { reqUser } from "../network";
-import ufooter from "../components/footer/uFooter"
+import { reqUser } from "../../network";
+import ufooter from "../../components/footer";
+import uheader from "../../components/header";
 
 export default {
   name: "ulogin",
@@ -38,8 +37,9 @@ export default {
       upassword: ""
     };
   },
-  components:{
-    ufooter
+  components: {
+    ufooter,
+    uheader
   },
   methods: {
     login() {
@@ -70,17 +70,6 @@ export default {
 </script>
 
 <style>
-.banner {
-  position: relative;
-  height: 86px;
-  background-color: #00a0d8;
-  margin: 0 auto;
-}
-.center {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-}
 .login {
   width: 980px;
   margin: 0 auto;

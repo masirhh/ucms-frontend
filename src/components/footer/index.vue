@@ -3,7 +3,7 @@
     <div class="footer">
       <div class="about">
         <div class="box-text">
-          <span>关于</span>
+          <span>About</span>
         </div>
         <div>
           <ul class="box-item">
@@ -33,7 +33,7 @@
       <el-divider class="footer-divider" direction="vertical"></el-divider>
       <div class="link">
         <div class="box-text">
-          <span>链接</span>
+          <span>Link</span>
         </div>
         <div>
           <ul class="box-item">
@@ -104,6 +104,7 @@ export default {
 }
 .box-item a {
   text-decoration: none;
+  color: black;
 }
 .box-item li {
   margin-top: 10px;
@@ -111,6 +112,6 @@ export default {
 }
 .box-item a:visited {
   text-decoration: none;
-  color: inherit;
+  color: black;
 }
 </style>

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { reqUser } from "../network";
+import { reqUser } from "@/network";
 
 export default {
   name: "user",
