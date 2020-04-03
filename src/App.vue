@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition name="el-fade-in-linear">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: "app",
+  name: "app"
 };
 </script>
 
 <style>
-#app{
+#app {
   min-width: 1414px;
 }
 </style>

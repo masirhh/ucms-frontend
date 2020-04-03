@@ -12,9 +12,11 @@ const main = () => import("@/views/main")
 const mine = () => import("@/views/mine")
 const regist = () => import("@/views/regist")
 const club = () => import("@/views/club")
+const clubdetail = () => import("@/views/club/detail")
 const error = () => import("@/views/error")
 const activity = () => import("@/views/activity")
 const actdetail = () => import("@/views/activity/detail")
+
 
 const routes = [
   // {
@@ -88,6 +90,11 @@ const routes = [
     path: "/club",
     name: "club",
     component: club
+  },
+  {
+    path: "/club/:id",
+    name: "clubdetail",
+    component: clubdetail
   },
   {
     path: "/activity",

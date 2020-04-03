@@ -1,28 +1,30 @@
 <template>
-  <div class="card">
-    <div class="card-img">
-      <img src="~@/assets/card.png" alt />
-    </div>
-    <el-divider class="card-divider" direction="vertical"></el-divider>
-    <div class="card-content">
-      <div class="card-content-head">
-        <span class="card-title">{{acname}}</span>
-        <el-date-picker
-          class="card-time"
-          v-model="actime"
-          type="date"
-          placeholder="Not Found"
-          format="yyyy 年 MM 月 dd 日"
-          readonly
-        ></el-date-picker>
+  <transition name="el-fade-in-linear">
+    <div class="card">
+      <div class="card-img">
+        <img src="~@/assets/card.png" alt />
       </div>
-      <el-divider></el-divider>
-      <div class="card-content-body">
-        <p class="card-content-body-p">{{acdesc}}</p>
-        <el-button round class="card-content-body-button" @click="handleClick()">查看详情</el-button>
+      <el-divider class="card-divider" direction="vertical"></el-divider>
+      <div class="card-content">
+        <div class="card-content-head">
+          <span class="card-title">{{acname}}</span>
+          <el-date-picker
+            class="card-time"
+            v-model="actime"
+            type="date"
+            placeholder="Not Found"
+            format="yyyy 年 MM 月 dd 日"
+            readonly
+          ></el-date-picker>
+        </div>
+        <el-divider></el-divider>
+        <div class="card-content-body">
+          <p class="card-content-body-p">{{acdesc}}</p>
+          <el-button round class="card-content-body-button" @click="handleClick()">查看详情</el-button>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>

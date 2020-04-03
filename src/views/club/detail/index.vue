@@ -1,8 +1,15 @@
-<template></template>
+<template>
+  <div>{{clubid}}</div>
+</template>
 
 <script>
 export default {
-  name: "uclubdetail"
+  name: "uclubdetail",
+  data() {
+    return {
+      clubid: this.$route.params.id
+    };
+  }
 };
 </script>
 

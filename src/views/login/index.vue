@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="loginbody">
     <uheader />
     <div class="login">
       <el-divider>
@@ -20,7 +20,9 @@
         </div>
       </div>
     </div>
-    <ufooter></ufooter>
+    <div class="foot">
+      <ufooter></ufooter>
+    </div>
   </div>
 </template>
 
@@ -70,6 +72,11 @@ export default {
 </script>
 
 <style>
+.loginbody {
+  position: relative;
+  height: 100vh;
+  min-height: 965px;
+}
 .login {
   width: 980px;
   margin: 0 auto;
@@ -96,5 +103,9 @@ export default {
 }
 .login-box-button {
   width: 150px;
+}
+.foot {
+  position: absolute;
+  bottom: 0px;
 }
 </style>

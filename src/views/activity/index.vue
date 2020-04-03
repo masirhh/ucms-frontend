@@ -1,5 +1,6 @@
 <template>
   <div class="activitybody">
+    <el-backtop></el-backtop>
     <uheader />
     <div class="activity-content">
       <el-divider></el-divider>
@@ -35,18 +36,22 @@
         ></el-pagination>
       </div>
     </div>
+    <ufooter />
   </div>
 </template>
 
 <script>
 import uheader from "@/components/header";
 import uactcard from "@/components/activity-card";
+import ufooter from "@/components/footer";
+
 import { reqActivities } from "@/network";
 export default {
   name: "uactivity",
   components: {
     uheader,
-    uactcard
+    uactcard,
+    ufooter
   },
   data() {
     return {

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="clubbody">
+    <el-backtop></el-backtop>
     <uheader />
     <div class="activity-content">
       <el-divider></el-divider>
@@ -28,6 +29,7 @@
       <div class="club-cards">
         <uclubcard
           v-for="item in clubs"
+          :clid="item.id"
           :clmembers="item.members"
           :clname="item.name"
           :cltime="item.createTime"
@@ -45,6 +47,7 @@
         @current-change="handleCurrentchange"
       ></el-pagination>
     </div>
+    <ufooter />
   </div>
 </template>
 
@@ -52,12 +55,14 @@
 import uheader from "@/components/header";
 import { reqClubtype, reqClub } from "@/network";
 import uclubcard from "@/components/club-card";
+import ufooter from "@/components/footer";
 
 export default {
   name: "uclub",
   components: {
     uheader,
-    uclubcard
+    uclubcard,
+    ufooter
   },
   data() {
     return {
@@ -142,6 +147,8 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  height: 420px;
+  overflow: hidden;
 }
 .activity-pager {
   margin-top: 20px;

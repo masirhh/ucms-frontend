@@ -1,31 +1,8 @@
 <template>
-  <div class="main">
+  <div class="mainbody">
+    <el-backtop></el-backtop>
     <ubanner />
     <div>
-      <div class="content-center">
-        <ul class="nav">
-          <li>
-            <router-link class="link" to="main">
-              <span>UCMS</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link class="link" to="club">
-              <span>社团</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link class="link" to="activity">
-              <span>活动</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link class="link" to="mine">
-              <span>我的</span>
-            </router-link>
-          </li>
-        </ul>
-      </div>
       <div class="carousel">
         <el-carousel height="400px">
           <el-carousel-item v-for="item in carpics" :key="item">
@@ -33,17 +10,66 @@
           </el-carousel-item>
         </el-carousel>
       </div>
+      <div class="content-center">
+        <div class="content-body">
+          <div class="hotactivity">
+            <div>
+              <div class="hots-head">
+                <div class="head-left">
+                  <img src="@/assets/shanzi.png" alt />
+                  <span>热门活动</span>
+                </div>
+                <div class="head-right">
+                  <el-button plain class="head-right-btn" @click="handleToAct">更多</el-button>
+                </div>
+              </div>
+              <div class="hot-box"></div>
+            </div>
+            <div class="hotimgs">
+              <el-carousel height="456px">
+                <el-carousel-item v-for="item in hotactimgs" :key="item">
+                  <img :src="item" alt />
+                </el-carousel-item>
+              </el-carousel>
+            </div>
+          </div>
+          <div class="hotclub">
+            <div>
+              <div class="hots-head">
+                <div class="head-left">
+                  <img src="@/assets/hulu.png" alt />
+                  <span>热门社团</span>
+                </div>
+                <div class="head-right">
+                  <el-button plain class="head-right-btn" @click="handleToClu">更多</el-button>
+                </div>
+              </div>
+              <div class="hot-box"></div>
+            </div>
+            <div class="hotimgs">
+              <el-carousel height="456px">
+                <el-carousel-item v-for="item in hotcluimgs" :key="item">
+                  <img :src="item" alt />
+                </el-carousel-item>
+              </el-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <ufooter></ufooter>
   </div>
 </template>
 
 <script>
-import ubanner from "../../components/header";
+import ubanner from "@/components/header";
+import ufooter from "@/components/footer";
 
 export default {
   name: "umain",
   components: {
-    ubanner
+    ubanner,
+    ufooter
   },
   data() {
     return {
@@ -52,21 +78,43 @@ export default {
         "http://localhost:8008/carousel/car2.jpg",
         "http://localhost:8008/carousel/car3.jpg",
         "http://localhost:8008/carousel/car4.jpg"
+      ],
+      hotactimgs: [
+        "http://localhost:8008/hotimgs/hotimg1.png",
+        "http://localhost:8008/hotimgs/hotimg2.png",
+        "http://localhost:8008/hotimgs/hotimg3.png"
+      ],
+      hotcluimgs: [
+        "http://localhost:8008/hotimgs/hotimg1.png",
+        "http://localhost:8008/hotimgs/hotimg2.png",
+        "http://localhost:8008/hotimgs/hotimg3.png"
       ]
     };
+  },
+  methods: {
+    handleToAct() {
+      this.$router.push("activity");
+    },
+    handleToClu() {
+      this.$router.push("club");
+    }
   },
   computed: {}
 };
 </script>
 
 <style>
-.main {
+.mainbody {
+  margin: 0 auto;
+}
+.carousel {
   margin: 0 auto;
 }
 
 .content-center {
   width: 1414px;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .nav {
@@ -80,5 +128,48 @@ export default {
 .link:visited {
   color: #303133;
   text-decoration: none;
+}
+.content-body {
+  margin-top: 20px;
+}
+.hotactivity {
+  display: flex;
+  justify-content: space-between;
+}
+.hotclub {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.hots-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1070px;
+  height: 36px;
+  margin-bottom: 16px;
+}
+.head-left {
+  height: 36px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+}
+.head-left span {
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: 700;
+  height: 36px;
+  line-height: 36px;
+}
+.head-right-btn {
+  height: 36px;
+}
+.hot-box {
+  height: 404px;
+  background-color: #f00;
+}
+.hotimgs {
+  width: 320px;
 }
 </style>

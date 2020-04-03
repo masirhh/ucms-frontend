@@ -72,16 +72,19 @@ export default {
 
 <style>
 .footer-wrap {
-  margin-top: 100px;
   height: 200px;
+  width: 100vw;
+  min-width: 1414px;
+  background-color: #F6F9FA;
 }
 .footer {
-  width: 980px;
   display: flex;
   margin: 0 auto;
   height: 100%;
   justify-content: center;
   align-items: center;
+  background-color: #F6F9FA;
+
 }
 .footer-divider {
   height: 100%;
