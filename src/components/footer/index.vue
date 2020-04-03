@@ -38,23 +38,23 @@
         <div>
           <ul class="box-item">
             <li>
-              <a href="https://spring.io/projects/spring-boot/" target="_blank">
-                <span>SpringBoot</span>
-              </a>
-            </li>
-            <li>
               <a href="https://cn.vuejs.org/" target="_blank">
                 <span>Vue.js</span>
               </a>
             </li>
             <li>
-              <a href="https://github.com/" target="_blank">
-                <span>Github</span>
+              <a href="https://vuex.vuejs.org/zh/" target="_blank">
+                <span>Vuex</span>
               </a>
             </li>
             <li>
-              <a href="http://nginx.org/" target="_blank">
-                <span>Nginx</span>
+              <a href="https://router.vuejs.org/zh/" target="_blank">
+                <span>Vue-router</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://element.eleme.cn/#/zh-CN" target="_blank">
+                <span>Element Ui</span>
               </a>
             </li>
           </ul>
@@ -75,7 +75,7 @@ export default {
   height: 200px;
   width: 100vw;
   min-width: 1414px;
-  background-color: #F6F9FA;
+  background-color: #f6f9fa;
 }
 .footer {
   display: flex;
@@ -83,8 +83,7 @@ export default {
   height: 100%;
   justify-content: center;
   align-items: center;
-  background-color: #F6F9FA;
-
+  background-color: #f6f9fa;
 }
 .footer-divider {
   height: 100%;

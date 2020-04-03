@@ -13,7 +13,7 @@
       <div class="content-center">
         <div class="content-body">
           <div class="hotactivity">
-            <div>
+            <div class="hot-left"> 
               <div class="hots-head">
                 <div class="head-left">
                   <img src="@/assets/shanzi.png" alt />
@@ -23,7 +23,9 @@
                   <el-button plain class="head-right-btn" @click="handleToAct">更多</el-button>
                 </div>
               </div>
-              <div class="hot-box"></div>
+              <div class="hot-box">
+                <uhotcard v-for="item in 10" :key="item"></uhotcard>
+              </div>
             </div>
             <div class="hotimgs">
               <el-carousel height="456px">
@@ -34,7 +36,7 @@
             </div>
           </div>
           <div class="hotclub">
-            <div>
+            <div class="hot-left">
               <div class="hots-head">
                 <div class="head-left">
                   <img src="@/assets/hulu.png" alt />
@@ -44,7 +46,9 @@
                   <el-button plain class="head-right-btn" @click="handleToClu">更多</el-button>
                 </div>
               </div>
-              <div class="hot-box"></div>
+              <div class="hot-box">
+                <uhotcard v-for="item in 10" :key="item"></uhotcard>
+              </div>
             </div>
             <div class="hotimgs">
               <el-carousel height="456px">
@@ -64,12 +68,14 @@
 <script>
 import ubanner from "@/components/header";
 import ufooter from "@/components/footer";
+import uhotcard from "@/components/hot-card";
 
 export default {
-  name: "umain",
+  name: "uhome",
   components: {
     ubanner,
-    ufooter
+    ufooter,
+    uhotcard
   },
   data() {
     return {
@@ -137,6 +143,9 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+.hot-left{
+  width: 1070px;
+}
 .hotclub {
   display: flex;
   justify-content: space-between;
@@ -167,8 +176,12 @@ export default {
   height: 36px;
 }
 .hot-box {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
   height: 404px;
-  background-color: #f00;
 }
 .hotimgs {
   width: 320px;

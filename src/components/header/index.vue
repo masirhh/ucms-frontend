@@ -5,7 +5,7 @@
         <img class="center" src="@/assets/ubanner.png" alt />
         <ul class="nav-menu">
           <li>
-            <router-link class="link" to="main">
+            <router-link class="link" to="home">
               <i class="el-icon-house el-icon">
                 <span>UCMS</span>
               </i>

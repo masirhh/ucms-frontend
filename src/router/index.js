@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 
 const user = () => import("@/views/user")
 const login = () => import("@/views/login")
-const main = () => import("@/views/main")
+const home = () => import("@/views/home")
 const mine = () => import("@/views/mine")
 const regist = () => import("@/views/regist")
 const club = () => import("@/views/club")
@@ -34,11 +34,11 @@ const routes = [
   // }
   {
     path: "/",
-    redirect: '/main'
+    redirect: '/home'
   }, {
-    path: "/main",
-    name: "main",
-    component: main,
+    path: "/home",
+    name: "home",
+    component: home,
   },
   {
     path: "/user",

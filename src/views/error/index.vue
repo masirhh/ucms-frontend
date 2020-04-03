@@ -15,6 +15,7 @@ export default {
 
 <style>
 .error {
+  overflow: hidden;
   height: 100vh;
   background-color: #00A0D8;
 }
