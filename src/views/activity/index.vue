@@ -68,12 +68,6 @@ export default {
       });
     },
     handleCurrentchange() {
-      // reqActivities({ method: "get", params: { pageNum: this.cpage } }).then(
-      //   res => {
-      //     this.activits = res.list;
-      //     this.ctotal = res.total;
-      //   }
-      // );
       this.remoteMethod();
     }
   },

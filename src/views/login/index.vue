@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import { reqUser } from "../../network";
-import ufooter from "../../components/footer";
-import uheader from "../../components/header";
+import { reqUser } from "@/network";
+import ufooter from "@/components/footer";
+import uheader from "@/components/header";
 
 export default {
   name: "ulogin",
