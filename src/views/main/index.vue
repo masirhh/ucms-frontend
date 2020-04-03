@@ -106,6 +106,7 @@ export default {
 <style>
 .mainbody {
   margin: 0 auto;
+  overflow-x: hidden;
 }
 .carousel {
   margin: 0 auto;

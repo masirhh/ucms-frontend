@@ -120,6 +120,9 @@ export default {
 </script>
 
 <style scoped>
+.clubbody{
+  overflow-x: hidden;
+}
 .activity-content {
   width: 1414px;
   margin: 0 auto;

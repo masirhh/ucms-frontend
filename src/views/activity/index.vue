@@ -83,6 +83,9 @@ export default {
 </script>
 
 <style scoped>
+.activitybody{
+  overflow-x: hidden;
+}
 .activity-content {
   width: 1414px;
   margin: 0 auto;
