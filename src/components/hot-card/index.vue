@@ -22,10 +22,10 @@ export default {
       cardimgurl: "http://localhost:8008/hotcard/hotcard.png"
     };
   },
-  methods:{
-      handleCardClick(){
-          console.log("You have Clicked!")
-      }
+  methods: {
+    handleCardClick() {
+      console.log("You have Clicked!");
+    }
   }
 };
 </script>
@@ -57,5 +57,13 @@ export default {
 .card-content-desc {
   font-size: 12px;
   color: #505050;
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+.hot-card:hover .card-content-title,
+.hot-card:hover .card-content-desc {
+  color: #00a0d8;
 }
 </style>
