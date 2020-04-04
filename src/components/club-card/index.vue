@@ -15,7 +15,7 @@
               <span>社团人数:{{cmembers}}</span>
             </div>
             <div>
-              <span>创立时间:{{ctime}}</span>
+              <span>创立时间:{{creatTime}}</span>
             </div>
           </div>
           <el-button class="card-button" @click="handButtonClick">查看详情</el-button>
@@ -49,6 +49,15 @@ export default {
         name: "clubdetail",
         params: { id: this.cid }
       });
+    }
+  },
+  computed: {
+    creatTime() {
+      let ct=new Date(this.ctime);
+      let myYear = ct.getFullYear();
+      let myMonth = ct.getMonth() + 1;
+      let myDate = ct.getDate();
+      return myYear + "-" + myMonth + "-" + myDate;
     }
   }
 };
