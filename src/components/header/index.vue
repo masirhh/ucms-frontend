@@ -5,28 +5,28 @@
         <img class="center" src="@/assets/ubanner.png" alt />
         <ul class="nav-menu">
           <li>
-            <router-link class="link" to="home">
+            <router-link class="link" to="/home">
               <i class="el-icon-house el-icon">
                 <span>UCMS</span>
               </i>
             </router-link>
           </li>
           <li>
-            <router-link class="link" to="club">
+            <router-link class="link" to="/club">
               <i class="el-icon-help el-icon">
                 <span>社团</span>
               </i>
             </router-link>
           </li>
           <li>
-            <router-link class="link" to="activity">
+            <router-link class="link" to="/activity">
               <i class="el-icon-basketball el-icon">
                 <span>活动</span>
               </i>
             </router-link>
           </li>
           <li>
-            <router-link class="link" to="mine">
+            <router-link class="link" to="/mine">
               <i class="el-icon-user el-icon">
                 <span>我的</span>
               </i>

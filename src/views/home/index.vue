@@ -6,7 +6,7 @@
       <div class="carousel">
         <el-carousel height="400px">
           <el-carousel-item v-for="item in carpics" :key="item">
-            <img :src="item" alt />
+            <img :src="item" class="carimgs" alt />
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -79,17 +79,20 @@ export default {
   },
   data() {
     return {
+      //  首页轮播图
       carpics: [
         "http://localhost:8008/carousel/car1.jpg",
         "http://localhost:8008/carousel/car2.jpg",
         "http://localhost:8008/carousel/car3.jpg",
         "http://localhost:8008/carousel/car4.jpg"
       ],
+      // 首页热门活动图片
       hotactimgs: [
         "http://localhost:8008/hotimgs/hotimg1.png",
         "http://localhost:8008/hotimgs/hotimg2.png",
         "http://localhost:8008/hotimgs/hotimg3.png"
       ],
+      // 首页热门社团图片
       hotcluimgs: [
         "http://localhost:8008/hotimgs/hotimg1.png",
         "http://localhost:8008/hotimgs/hotimg2.png",
@@ -116,6 +119,10 @@ export default {
 }
 .carousel {
   margin: 0 auto;
+}
+.carimgs{
+  width: 100vw;
+  height: 400px;
 }
 
 .content-center {

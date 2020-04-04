@@ -1,5 +1,4 @@
 <template>
-  <transition name="el-fade-in-linear">
     <div class="club-card">
       <div class="card-img">
         <img src="~@/assets/club-card.jpg" alt />
@@ -22,7 +21,6 @@
         </div>
       </div>
     </div>
-  </transition>
 </template>
 
 <script>
@@ -44,7 +42,6 @@ export default {
   },
   methods: {
     handButtonClick() {
-      console.log(this.cid);
       this.$router.push({
         name: "clubdetail",
         params: { id: this.cid }

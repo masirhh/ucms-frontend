@@ -96,6 +96,7 @@ export default {
   overflow: hidden;
   height: 123px;
   margin-bottom: 0;
+  color: #909399;
 }
 .card-content-body-button {
   position: absolute;

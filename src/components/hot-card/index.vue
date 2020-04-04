@@ -19,7 +19,7 @@ export default {
   name: "uhotcard",
   data() {
     return {
-      cardimgurl: "http://localhost:8008/hotcard/hotcard.png"
+      cardimgurl: "http://localhost:8008/hotimgs/hotimg1.png"
     };
   },
   methods: {

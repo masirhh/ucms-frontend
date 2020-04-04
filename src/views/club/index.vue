@@ -149,8 +149,9 @@ export default {
 .club-cards {
   display: flex;
   justify-content: space-between;
+  align-content:stretch;
   flex-wrap: wrap;
-  height: 420px;
+  height: 450px;
   overflow: hidden;
 }
 .activity-pager {

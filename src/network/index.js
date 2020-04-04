@@ -88,6 +88,20 @@ export function reqClubtype(config){
     return instance(config)
 }
 
+export function reqMessage(config){
+    const instance = axios.create({
+        baseURL: 'http://localhost:8081/ucms/message',
+        timeout: 5000
+    })
+    instance.interceptors.response.use(res => {
+        return res.data.data
+    }, err => {
+        err.message = 'Response Error!'
+        return err
+    })
+    return instance(config)
+}
+
 export function upAvatar(config){
     const instance = axios.create({
         baseURL: 'http://localhost:8082/ucms/file',

@@ -13,8 +13,8 @@
               </a>
             </li>
             <li>
-              <a href="https://cn.vuejs.org/" target="_blank">
-                <span>Vue.js</span>
+              <a href="https://redis.io/" target="_blank">
+                <span>Redis</span>
               </a>
             </li>
             <li>
