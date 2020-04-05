@@ -93,14 +93,15 @@ export default {
                 key: id
               }
             }).then(res => {
-              if (id != res) {
+              res=JSON.parse(res)
+              if (id != res.id) {
                 this.$message.error("登陆信息已失效，请重新登陆");
               } else {
                 this.$store.commit("setUser", res);
                 reqMessage({
                   method: "post",
                   data: {
-                    fromUserId: this.$store.state.user,
+                    fromUserId: this.$store.state.user.id,
                     toUserId: this.club.admin,
                     content: success.value
                   }

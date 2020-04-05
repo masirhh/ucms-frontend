@@ -81,7 +81,7 @@ export default {
         }).then(res => {
           if (res.id != null) {
             this.$alert("恭喜你 注册成功", "注册成功").then(() => {
-              this.$router.push("main");
+              this.$router.push("/home");
             });
           }
         });

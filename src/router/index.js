@@ -17,6 +17,13 @@ const error = () => import("@/views/error")
 const activity = () => import("@/views/activity")
 const actdetail = () => import("@/views/activity/detail")
 
+const umineinfo = () => import("@/views/mine/mine-info")
+const uminepassword=()=>import("@/views/mine/mine-password")
+const uminemanaged=()=>import("@/views/mine/mine-managed")
+const uminepublishedact=()=>import("@/views/mine/mine-publishedact")
+const uminejoined=()=>import("@/views/mine/mine-joined")
+const uminerecmsg=()=>import("@/views/mine/mine-recmsg")
+const uminesysmsg=()=>import("@/views/mine/mine-sysmsg")
 
 const routes = [
   // {
@@ -56,11 +63,34 @@ const routes = [
   {
     path: "/mine",
     component: mine,
+    children: [{
+      path: "myinfo",
+      name: "umineinfo",
+      component: umineinfo
+    },{
+      path:"mypassword",
+      component:uminepassword
+    },{
+      path:"joinedclub",
+      component:uminejoined
+    },{
+      path:"managedclub",
+      component:uminemanaged
+    },{
+      path:"recmsg",
+      component:uminerecmsg
+    },{
+      path:"sysmsg",
+      component:uminesysmsg
+    },{
+      path:"publishedact",
+      component:uminepublishedact
+    }],
     beforeEnter: (to, from, next) => {
       let storage = window.localStorage;
       let id = storage.getItem("id")
       if (id === null) {
-        next("login")
+        next("/login")
       } else(
         reqLoginUser({
           method: "get",
@@ -68,13 +98,19 @@ const routes = [
             key: id
           }
         }).then(res => {
-          if (id === res) {
-            next("mine")
+          if (res === null) {
+            next("/login")
           } else {
-            if (from.name === "login") {
-              next("main")
+            let usr = JSON.parse(res)
+            if (id == usr.id) {
+              next("/mine")
+            } else {
+              if (from.name === "login") {
+                next("/login")
+              } else {
+                next("/login")
+              }
             }
-            next("login")
           }
         })
       )

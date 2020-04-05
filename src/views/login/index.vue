@@ -35,8 +35,8 @@ export default {
   name: "ulogin",
   data() {
     return {
-      uname: "",
-      upassword: ""
+      uname: null,
+      upassword: null
     };
   },
   components: {
@@ -45,24 +45,31 @@ export default {
   },
   methods: {
     login() {
-      reqUser({
-        method: "get",
-        params: {
-          name: this.uname,
-          password: this.upassword
-        }
-      }).then(res => {
-        if (res != null) {
-          let storage = window.localStorage;
-          storage.setItem("id", res.id);
-          this.$router.push("main");
-        } else {
-          this.$alert(
-            "登陆失败，请检查用户名和密码是否正确。若还没有账户，请先注册。",
-            "登陆失败"
-          );
-        }
-      });
+      if (this.uname === null && this.upassword === null) {
+        this.$alert(
+              "登陆失败，请检查用户名和密码是否正确。若还没有账户，请先注册。",
+              "登陆失败"
+            );
+      } else {
+        reqUser({
+          method: "get",
+          params: {
+            name: this.uname,
+            password: this.upassword
+          }
+        }).then(res => {
+          if (res != null) {
+            let storage = window.localStorage;
+            storage.setItem("id", res.id);
+            this.$router.push("/home");
+          } else {
+            this.$alert(
+              "登陆失败，请检查用户名和密码是否正确。若还没有账户，请先注册。",
+              "登陆失败"
+            );
+          }
+        });
+      }
     },
     toRegist() {
       this.$router.push("regist");
