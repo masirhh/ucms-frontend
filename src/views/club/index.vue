@@ -153,6 +153,8 @@ export default {
   flex-wrap: wrap;
   height: 450px;
   overflow: hidden;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 .activity-pager {
   margin-top: 20px;
