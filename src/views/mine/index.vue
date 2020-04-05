@@ -33,15 +33,15 @@
                 <span>我的消息</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/mine/recmsg">我收到的消息</el-menu-item>
-                <el-menu-item index="/mine/sysmsg">系统消息</el-menu-item>
+                <el-menu-item index="/mine/recmsg">我的消息</el-menu-item>
+                <el-menu-item index="/mine/sysmsg">系统提示</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
         </div>
         <div class="card-right">
           <div class="noview" v-if="isclicknav">
-            <span>你想看点什么东西呢？</span>
+            <span>为什么不点点看左边的东西呢？</span>
           </div>
           <router-view></router-view>
         </div>
@@ -89,7 +89,7 @@ export default {
     }).then(res => {
       res = JSON.parse(res);
       this.$store.commit("setUser", res);
-      if (res.userType != 1) {
+      if (res.userType === 2) {
         this.clubmanageable = true;
       }
     });

@@ -1,5 +1,5 @@
 <template>
-  <div class="password">
+  <div class="managed">
     <div class="title">
       <span>我管理的社团</span>
     </div>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.password {
+.managed {
   width: 780px;
   height: 560px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="password">
+  <div class="sysmsg">
     <div class="title">
       <span>我收到的系统消息</span>
     </div>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.password {
+.sysmsg {
   width: 780px;
   height: 560px;
 }

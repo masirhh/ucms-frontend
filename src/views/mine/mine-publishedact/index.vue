@@ -1,5 +1,5 @@
 <template>
-  <div class="password">
+  <div class="publishedact">
     <div class="title">
       <span>我发布的活动</span>
     </div>
@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
 
-.password {
+.publishedact {
   width: 780px;
   height: 560px;
 }
