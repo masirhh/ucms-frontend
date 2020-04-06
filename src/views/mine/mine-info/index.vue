@@ -205,14 +205,14 @@ export default {
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
+  width: 200px;
+  height: 200px;
+  line-height: 200x;
   text-align: center;
 }
 .avatar {
-  width: 178px;
-  height: 178px;
+  width: 200px;
+  height: 200px;
   display: block;
 }
 </style>

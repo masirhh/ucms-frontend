@@ -6,7 +6,7 @@ import {
 
 Vue.use(VueRouter)
 
-const user = () => import("@/views/user")
+
 const login = () => import("@/views/login")
 const home = () => import("@/views/home")
 const mine = () => import("@/views/mine")
@@ -46,11 +46,6 @@ const routes = [
     path: "/home",
     name: "home",
     component: home,
-  },
-  {
-    path: "/user",
-    name: "user",
-    component: user,
   },
   {
     path: "/login",

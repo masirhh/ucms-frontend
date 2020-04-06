@@ -17,7 +17,7 @@
     </div>
     <div class="right">
       <div class="btns">
-        <el-button v-if="ischecked" class="btn" type="primary">
+        <el-button v-if="ischecked" @click="handleCheckBtn" class="btn" type="primary">
           <span>已读</span>
         </el-button>
         <el-button @click="handleOkBtn" v-if="isOpreated" class="btn btn-bottom" type="primary">
@@ -55,6 +55,18 @@ export default {
     };
   },
   methods: {
+    handleCheckBtn() {
+      reqMessage({
+        method: "put",
+        data: {
+          id: this.msgid,
+          opreated: 1,
+          checked: 1
+        }
+      }).then(res => {
+        if (res != null) this.checked = false;
+      });
+    },
     handleOkBtn() {
       switch (this.opreated) {
         case 2: {
@@ -108,13 +120,13 @@ export default {
                 }
               }).then(res => {
                 reqJoin({
-                  method: "put",
+                  method: "delete",
                   data: {
                     userId: this.fromid,
                     clubId: res.id
                   }
                 }).then(res => {
-                  if (res != null) this.$message.success("操作成功");
+                  if (res === true) this.$message.success("操作成功");
                 });
               });
             } else {
