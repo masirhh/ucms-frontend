@@ -5,22 +5,22 @@
         <el-avatar :size="60" :src="avatarUrl"></el-avatar>
       </div>
       <div class="name">
-        <span>{{id}}</span>
+        <span>{{name}}</span>
       </div>
     </div>
     <div class="middle">
       <el-divider class="divider" direction="vertical"></el-divider>
       <div class="middle-content">
-        <span>消息内容</span>
+        <span>{{message}}--{{ctime}}</span>
       </div>
       <el-divider class="divider" direction="vertical"></el-divider>
     </div>
     <div class="right">
       <div class="btns">
-        <el-button class="btn" type="primary">
+        <el-button v-if="ischecked" class="btn" type="primary">
           <span>已读</span>
         </el-button>
-        <el-button class="btn btn-bottom" type="primary">
+        <el-button @click="handleOkBtn" v-if="isOpreated" class="btn btn-bottom" type="primary">
           <span>同意</span>
         </el-button>
       </div>
@@ -29,35 +29,139 @@
 </template>
 
 <script>
-import { reqUser, reqMessage, reqFileUrl } from "@/network";
+import { reqUser, reqFileUrl, reqMessage, reqJoin, reqClub } from "@/network";
 
 export default {
   name: "umessage",
   props: {
-    uid: null
+    umsgid: null,
+    ufromid: null,
+    umsg: null,
+    uopreated: null,
+    uchecked: null,
+    ucreatetime: null
   },
   data() {
     return {
-      fromid: this.uid,
+      fromid: this.ufromid,
+      msgid: this.umsgid,
       name: "",
-      message: "",
-      opreated: "",
-      avatarUrl:
-        "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      message: this.umsg,
+      checked: this.uchecked,
+      opreated: this.uopreated,
+      time: this.ucreatetime,
+      avatarid: "",
+      avatarUrl: ""
     };
   },
+  methods: {
+    handleOkBtn() {
+      switch (this.opreated) {
+        case 2: {
+          reqMessage({
+            method: "put",
+            data: {
+              id: this.msgid,
+              opreated: 1,
+              checked: 1
+            }
+          }).then(res => {
+            if (res != null) {
+              reqClub({
+                method: "get",
+                url: "/get-club-by-admin",
+                params: {
+                  id: this.$store.state.user.id
+                }
+              }).then(res => {
+                reqJoin({
+                  method: "post",
+                  data: {
+                    userId: this.fromid,
+                    clubId: res.id
+                  }
+                }).then(res => {
+                  if (res != null) this.$message.success("操作成功");
+                });
+              });
+            } else {
+              this.$message.error("操作失败");
+            }
+          });
+          break;
+        }
+        case 3: {
+          reqMessage({
+            method: "put",
+            data: {
+              id: this.msgid,
+              opreated: 1,
+              checked: 1
+            }
+          }).then(res => {
+            if (res != null) {
+              reqClub({
+                method: "get",
+                url: "/get-club-by-admin",
+                params: {
+                  id: this.$store.state.user.id
+                }
+              }).then(res => {
+                reqJoin({
+                  method: "put",
+                  data: {
+                    userId: this.fromid,
+                    clubId: res.id
+                  }
+                }).then(res => {
+                  if (res != null) this.$message.success("操作成功");
+                });
+              });
+            } else {
+              this.$message.error("操作失败");
+            }
+          });
+          break;
+        }
+      }
+    }
+  },
   created: function() {
-      reqUser({
-          method:"get",
-          params:{
-              id:this.fromid
-          }
-      }).then(res=>{
-          this.name=res.name
-          
-      })
-
-
+    reqUser({
+      method: "get",
+      url: "/" + this.fromid
+    }).then(res => {
+      this.name = res.name;
+      reqFileUrl({
+        method: "get",
+        params: {
+          fileId: res.avatar
+        }
+      }).then(res1 => {
+        this.avatarUrl = res1;
+      });
+    });
+  },
+  computed: {
+    ischecked() {
+      if (this.checked === 1) {
+        return false;
+      } else return true;
+    },
+    isOpreated() {
+      if (this.opreated === 1) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    ctime() {
+      let ct = new Date(this.ucreatetime);
+      let myYear = ct.getFullYear();
+      let myMonth = ct.getMonth() + 1;
+      let myDate = ct.getDate();
+      return myYear + "-" + myMonth + "-" + myDate;
+    }
   }
 };
 </script>

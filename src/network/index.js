@@ -32,7 +32,23 @@ export function reqClub(config) {
 
 }
 
-export function reqLoginUser(config){
+export function reqJoin(config) {
+    const instance = axios.create({
+        baseURL: 'http://localhost:8081/ucms/join',
+        timeout: 5000
+    })
+    instance.interceptors.response.use(res => {
+        return res.data.data
+    }, err => {
+        err.message = 'Response Error!'
+        return err
+    })
+    return instance(config)
+
+}
+
+
+export function reqLoginUser(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8081/ucms/redis/getUser',
         timeout: 5000
@@ -46,7 +62,7 @@ export function reqLoginUser(config){
     return instance(config)
 }
 
-export function reqActivities(config){
+export function reqActivities(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8081/ucms/activity',
         timeout: 5000
@@ -60,7 +76,7 @@ export function reqActivities(config){
     return instance(config)
 }
 
-export function reqArticle(config){
+export function reqArticle(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8081/ucms/article',
         timeout: 5000
@@ -74,7 +90,7 @@ export function reqArticle(config){
     return instance(config)
 }
 
-export function reqClubtype(config){
+export function reqClubtype(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8081/ucms/type',
         timeout: 5000
@@ -88,7 +104,7 @@ export function reqClubtype(config){
     return instance(config)
 }
 
-export function reqMessage(config){
+export function reqMessage(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8081/ucms/message',
         timeout: 5000
@@ -102,7 +118,7 @@ export function reqMessage(config){
     return instance(config)
 }
 
-export function upAvatar(config){
+export function upAvatar(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8082/ucms/file',
         timeout: 5000
@@ -116,7 +132,7 @@ export function upAvatar(config){
     return instance(config)
 }
 
-export function reqFileUrl(config){
+export function reqFileUrl(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8082/ucms/file',
         timeout: 5000

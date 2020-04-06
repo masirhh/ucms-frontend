@@ -93,7 +93,7 @@ export default {
                 key: id
               }
             }).then(res => {
-              res=JSON.parse(res)
+              res = JSON.parse(res);
               if (id != res.id) {
                 this.$message.error("登陆信息已失效，请重新登陆");
               } else {
@@ -103,7 +103,8 @@ export default {
                   data: {
                     fromUserId: this.$store.state.user.id,
                     toUserId: this.club.admin,
-                    content: success.value
+                    content: success.value,
+                    opreated: 2
                   }
                 }).then(res => {
                   if (res === true) {

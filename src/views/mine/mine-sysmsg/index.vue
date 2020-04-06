@@ -4,12 +4,49 @@
       <span>我收到的系统消息</span>
     </div>
     <el-divider>UCMS</el-divider>
+
+    <div class="message-box">
+      <umessage
+        v-for="item in messages"
+        :key="item.id"
+        :umsgid="item.id"
+        :ufromid="item.fromUserId"
+        :umsg="item.content"
+        :uopreated="item.opreated"
+        :uchecked="item.checked"
+        :ucreatetime="item.createTime"
+      ></umessage>
+    </div>
   </div>
 </template>
 
 <script>
+import umessage from "@/components/message";
+import { reqMessage } from "@/network";
+
 export default {
-  name: "uminesysmsg"
+  name: "uminerecmsg",
+  components: {
+    umessage
+  },
+  data() {
+    return {
+      messages: null,
+      id: this.$store.state.user.id
+    };
+  },
+  created: function() {
+    reqMessage({
+      method: "get",
+      url: "/mymessage",
+      params: {
+        toUserId: this.id,
+        fromUserId: 1
+      }
+    }).then(res => {
+      this.messages = res;
+    });
+  }
 };
 </script>
 
