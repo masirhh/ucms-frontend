@@ -47,7 +47,6 @@ export function reqJoin(config) {
 
 }
 
-
 export function reqLoginUser(config) {
     const instance = axios.create({
         baseURL: 'http://localhost:8081/ucms/redis/getUser',

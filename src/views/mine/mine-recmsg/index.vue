@@ -17,6 +17,16 @@
         :ucreatetime="item.createTime"
       ></umessage>
     </div>
+    <div class="page-msg">
+      <el-pagination
+        :total="ctotal"
+        :page-size="4"
+        :current-page.sync="cpage"
+        @current-change="handlepagechange"
+        background
+        layout="prev, pager, next"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
@@ -32,19 +42,28 @@ export default {
   data() {
     return {
       messages: null,
-      id: this.$store.state.user.id
+      id: this.$store.state.user.id,
+      cpage: 1,
+      ctotal: null
     };
   },
+  methods: {
+    handlepagechange() {
+      reqMessage({
+        method: "get",
+        url: "/mymessage",
+        params: {
+          toUserId: this.id,
+          pageNum: this.cpage
+        }
+      }).then(res => {
+        this.messages = res.list;
+        this.ctotal = res.total;
+      });
+    }
+  },
   created: function() {
-    reqMessage({
-      method: "get",
-      url: "/mymessage",
-      params: {
-        toUserId: this.id
-      }
-    }).then(res => {
-      this.messages = res;
-    });
+    this.handlepagechange();
   }
 };
 </script>
@@ -60,5 +79,9 @@ export default {
 .title span {
   margin-left: 10px;
   font-size: 20px;
+}
+.page-msg {
+  text-align: center;
+  margin-top: 20px;
 }
 </style>

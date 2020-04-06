@@ -2,7 +2,6 @@
   <div>
     <uheader />
     <div class="actdetail-content">
-      <mavon-editor ref="md" v-model="mddata" @imgAdd="addimg" @save="savamd"></mavon-editor>
       <mavon-editor
         v-model="viewerdata"
         :subfield="prop.subfield"
@@ -17,40 +16,18 @@
 
 <script>
 import uheader from "@/components/header";
-import { upAvatar, reqArticle } from "@/network";
+import { reqArticle } from "@/network";
 
 export default {
   name: "uactdetail",
   data() {
-    return { actid: this.$route.params.id, mddata: "", viewerdata: "" };
+    return { actid: this.$route.params.id, viewerdata: "" };
   },
   components: {
     uheader
   },
-  methods: {
-    addimg(pos, file) {
-      let formdata = new FormData();
-      formdata.append("avatar", file);
-      upAvatar({
-        method: "post",
-        data: formdata,
-        headers: { "Content-Type": "multipart/form-data" }
-      }).then(res => {
-        this.$refs.md.$img2Url(pos, res);
-      });
-    },
-    savamd(origin) {
-      reqArticle({
-        method: "post",
-        data: {
-          content: origin
-        }
-      }).then(res => {
-        this.viewerdata = res.content;
-        console.log(this.viewerdata);
-      });
-    }
-  },
+  methods: {},
+
   computed: {
     prop() {
       let data = {
@@ -62,6 +39,14 @@ export default {
       };
       return data;
     }
+  },
+  created: function() {
+    reqArticle({
+      method: "get",
+      url: "/" + this.actid
+    }).then(res => {
+      this.viewerdata = res.content;
+    });
   }
 };
 </script>

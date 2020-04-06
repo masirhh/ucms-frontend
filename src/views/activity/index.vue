@@ -22,7 +22,7 @@
           :actname="item.name"
           :acttime="item.organizeTime"
           :actdesc="item.description"
-          :actid="item.id"
+          :actartid="item.article"
         ></uactcard>
       </div>
       <div class="activity-pager">

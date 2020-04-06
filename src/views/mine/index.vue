@@ -24,7 +24,7 @@
               <el-menu-item-group>
                 <el-menu-item  index="/mine/joinedclub">我加入的社团</el-menu-item>
                 <el-menu-item v-if="clubmanageable" index="/mine/managedclub">我管理的社团</el-menu-item>
-                <el-menu-item v-if="clubmanageable" index="/mine/publishedact">我发布的活动</el-menu-item>
+                <el-menu-item v-if="clubmanageable" index="/mine/publishedact">本社团的活动</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="3">

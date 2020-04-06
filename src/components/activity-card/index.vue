@@ -20,7 +20,7 @@
         <el-divider></el-divider>
         <div class="card-content-body">
           <p class="card-content-body-p">{{acdesc}}</p>
-          <el-button round class="card-content-body-button" @click="handleClick()">查看详情</el-button>
+          <el-button round class="card-content-body-button" @click="handleClick">查看详情</el-button>
         </div>
       </div>
     </div>
@@ -34,14 +34,14 @@ export default {
     actname: null,
     acttime: null,
     actdesc: null,
-    actid: null
+    actartid: null
   },
   data() {
     return {
       acname: this.actname,
       actime: this.acttime,
       acdesc: this.actdesc,
-      acid: this.actid
+      artid: this.actartid
     };
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
       this.$router.push({
         name: "actdetail",
         params: {
-          id: this.acid
+          id: this.artid
         }
       });
     }
