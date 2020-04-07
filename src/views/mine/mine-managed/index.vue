@@ -153,8 +153,6 @@ export default {
         });
     },
     handleQuitClub(row) {
-      console.log("1 " + this.managedClub.id);
-      console.log(row);
       reqJoin({
         method: "delete",
         data: {

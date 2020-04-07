@@ -5,27 +5,68 @@
     </div>
     <div class="card-content">
       <div class="card-content-title">
-        <span>活动标题</span>
+        <span>{{hname}}</span>
       </div>
       <div class="card-content-desc">
-        <span>活动简介活动简介活动简介活动简介活动简介活动简介活动简介</span>
+        <span>{{hdesc}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { reqFileUrl } from "@/network";
+
 export default {
   name: "uhotcard",
+  props: {
+    cid: null,
+    cname: null,
+    cdesc: null,
+    cavatar: null,
+    ctype: null
+  },
   data() {
     return {
+      hid: this.cid,
+      hname: this.cname,
+      hdesc: this.cdesc,
+      havatar: this.cavatar,
+      htype: this.ctype,
       cardimgurl: "http://localhost:8008/hotimgs/hotimg1.png"
     };
   },
   methods: {
     handleCardClick() {
-      console.log("You have Clicked!");
+      switch (this.htype) {
+        case 1: {
+          this.$router.push({
+            name: "actdetail",
+            params: { id: this.hid }
+          });
+          break;
+        }
+        case 2: {
+          this.$router.push({
+            name: "clubdetail",
+            params: {
+              id: this.hid
+            }
+          });
+          break;
+        }
+      }
     }
+  },
+  created: function() {
+    reqFileUrl({
+      method: "get",
+      params: {
+        fileId: this.havatar
+      }
+    }).then(res => {
+      this.cardimgurl = res;
+    });
   }
 };
 </script>

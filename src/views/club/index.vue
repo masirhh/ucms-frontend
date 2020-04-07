@@ -30,6 +30,7 @@
         <uclubcard
           v-for="item in clubs"
           :clid="item.id"
+          :cavtarid="item.avatar"
           :clmembers="item.members"
           :clname="item.name"
           :cltime="item.createTime"

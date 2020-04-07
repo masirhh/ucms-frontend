@@ -38,7 +38,7 @@
             </div>
             <el-divider class="middle-divider" direction="vertical">fengexian</el-divider>
             <div class="middle-right">
-              <img src="~@/assets/club-card.jpg" class="middle-right-img" alt />
+              <img :src="clubavatarurl" class="middle-right-img" alt />
             </div>
           </div>
           <el-divider></el-divider>
@@ -58,17 +58,17 @@
 </template>
 
 <script>
-import { reqClub } from "@/network";
+import { reqClub, reqLoginUser, reqMessage, reqFileUrl } from "@/network";
 import uheader from "@/components/header";
 import ufooter from "@/components/footer";
-import { reqLoginUser, reqMessage } from "@/network";
 
 export default {
   name: "uclubdetail",
   data() {
     return {
       clubid: this.$route.params.id,
-      club: ""
+      club: "",
+      clubavatarurl: ""
     };
   },
   components: { uheader, ufooter },
@@ -93,26 +93,30 @@ export default {
                 key: id
               }
             }).then(res => {
-              res = JSON.parse(res);
-              if (id != res.id) {
-                this.$message.error("登陆信息已失效，请重新登陆");
+              if (res === null) {
+                this.$message.error("你尚未登陆，请先登录！");
               } else {
-                this.$store.commit("setUser", res);
-                reqMessage({
-                  method: "post",
-                  data: {
-                    fromUserId: this.$store.state.user.id,
-                    toUserId: this.club.admin,
-                    content: success.value,
-                    opreated: 2
-                  }
-                }).then(res => {
-                  if (res === true) {
-                    this.$message.success("申请成功，请静候佳音");
-                  } else {
-                    this.$message.error("登陆信息已失效，请重新登陆");
-                  }
-                });
+                res = JSON.parse(res);
+                if (id != res.id) {
+                  this.$message.error("登陆信息已失效，请重新登陆");
+                } else {
+                  this.$store.commit("setUser", res);
+                  reqMessage({
+                    method: "post",
+                    data: {
+                      fromUserId: this.$store.state.user.id,
+                      toUserId: this.club.admin,
+                      content: success.value,
+                      opreated: 2
+                    }
+                  }).then(res => {
+                    if (res === true) {
+                      this.$message.success("申请成功，请静候佳音");
+                    } else {
+                      this.$message.error("登陆信息已失效，请重新登陆");
+                    }
+                  });
+                }
               }
             });
         })
@@ -138,6 +142,14 @@ export default {
       url: "/" + this.clubid
     }).then(res => {
       this.club = res;
+      reqFileUrl({
+        method: "get",
+        params: {
+          fileId: res.avatar
+        }
+      }).then(res => {
+        this.clubavatarurl = res;
+      });
     });
   }
 };

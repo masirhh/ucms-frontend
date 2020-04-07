@@ -2,7 +2,7 @@
   <transition name="el-fade-in-linear">
     <div class="card">
       <div class="card-img">
-        <img src="~@/assets/card.png" alt />
+        <img class="card-img-body" :src="artavatarurl" alt />
       </div>
       <el-divider class="card-divider" direction="vertical"></el-divider>
       <div class="card-content">
@@ -28,20 +28,26 @@
 </template>
 
 <script>
+import { reqFileUrl } from "@/network";
 export default {
   name: "uactcard",
   props: {
     actname: null,
     acttime: null,
     actdesc: null,
-    actartid: null
+    actartid: null,
+    actavatar: null,
+    acactid: null
   },
   data() {
     return {
       acname: this.actname,
       actime: this.acttime,
       acdesc: this.actdesc,
-      artid: this.actartid
+      artid: this.actartid,
+      actid: this.acactid,
+      artavatarid: this.actavatar,
+      artavatarurl: ""
     };
   },
   methods: {
@@ -49,10 +55,21 @@ export default {
       this.$router.push({
         name: "actdetail",
         params: {
-          id: this.artid
+          id: this.artid,
+          actid: this.acactid
         }
       });
     }
+  },
+  created: function() {
+    reqFileUrl({
+      method: "get",
+      params: {
+        fileId: this.actartid
+      }
+    }).then(res => {
+      this.artavatarurl = res;
+    });
   }
 };
 </script>
@@ -64,6 +81,11 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 .card-img {
+  width: 235px;
+  height: 236px;
+}
+
+.card-img-body {
   width: 235px;
   height: 236px;
 }

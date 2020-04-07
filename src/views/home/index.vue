@@ -13,7 +13,7 @@
       <div class="content-center">
         <div class="content-body">
           <div class="hotactivity">
-            <div class="hot-left"> 
+            <div class="hot-left">
               <div class="hots-head">
                 <div class="head-left">
                   <img src="@/assets/shanzi.png" alt />
@@ -24,7 +24,16 @@
                 </div>
               </div>
               <div class="hot-box">
-                <uhotcard v-for="item in 10" :key="item"></uhotcard>
+                <!-- 热门活动 -->
+                <uhotcard
+                  v-for="item in hotacts"
+                  :key="item.id"
+                  :cid="item.article"
+                  :cname="item.name"
+                  :cdesc="item.description"
+                  :cavatar="item.avatar"
+                  :ctype="1"
+                ></uhotcard>
               </div>
             </div>
             <div class="hotimgs">
@@ -47,7 +56,16 @@
                 </div>
               </div>
               <div class="hot-box">
-                <uhotcard v-for="item in 10" :key="item"></uhotcard>
+                <!-- 热门社团 -->
+                <uhotcard
+                  v-for="item in hotclubs"
+                  :key="item.id"
+                  :cid="item.id"
+                  :cname="item.name"
+                  :cdesc="item.description"
+                  :cavatar="item.avatar"
+                  :ctype="2"
+                ></uhotcard>
               </div>
             </div>
             <div class="hotimgs">
@@ -69,6 +87,7 @@
 import ubanner from "@/components/header";
 import ufooter from "@/components/footer";
 import uhotcard from "@/components/hot-card";
+import { reqActivities, reqClub } from "@/network";
 
 export default {
   name: "uhome",
@@ -81,23 +100,25 @@ export default {
     return {
       //  首页轮播图
       carpics: [
-        "http://localhost:8008/carousel/car1.jpg",
-        "http://localhost:8008/carousel/car2.jpg",
-        "http://localhost:8008/carousel/car3.jpg",
-        "http://localhost:8008/carousel/car4.jpg"
+        "http://localhost:8008/carousel/car1.png",
+        "http://localhost:8008/carousel/car2.png",
+        "http://localhost:8008/carousel/car3.png",
+        "http://localhost:8008/carousel/car4.png"
       ],
       // 首页热门活动图片
       hotactimgs: [
-        "http://localhost:8008/hotimgs/hotimg1.png",
-        "http://localhost:8008/hotimgs/hotimg2.png",
-        "http://localhost:8008/hotimgs/hotimg3.png"
+        "http://localhost:8008/carousel/car5.png",
+        "http://localhost:8008/carousel/car6.png",
+        "http://localhost:8008/carousel/car7.png"
       ],
       // 首页热门社团图片
       hotcluimgs: [
-        "http://localhost:8008/hotimgs/hotimg1.png",
-        "http://localhost:8008/hotimgs/hotimg2.png",
-        "http://localhost:8008/hotimgs/hotimg3.png"
-      ]
+        "http://localhost:8008/carousel/car8.png",
+        "http://localhost:8008/carousel/car9.png",
+        "http://localhost:8008/carousel/car10.png"
+      ],
+      hotacts: "",
+      hotclubs: ""
     };
   },
   methods: {
@@ -108,11 +129,30 @@ export default {
       this.$router.push("club");
     }
   },
+  created: function() {
+    reqActivities({
+      url: "/homeact",
+      params: {
+        pageNum: 1
+      }
+    }).then(res => {
+      this.hotacts = res.list;
+    });
+
+    reqClub({
+      method: "get",
+      params: {
+        pageNum: 1
+      }
+    }).then(res => {
+      this.hotclubs = res.list;
+    });
+  },
   computed: {}
 };
 </script>
 
-<style>
+<style scoped>
 .mainbody {
   margin: 0 auto;
   overflow-x: hidden;
@@ -120,7 +160,7 @@ export default {
 .carousel {
   margin: 0 auto;
 }
-.carimgs{
+.carimgs {
   width: 100vw;
   height: 400px;
 }
@@ -150,7 +190,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.hot-left{
+.hot-left {
   width: 1070px;
 }
 .hotclub {

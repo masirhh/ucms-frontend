@@ -19,9 +19,11 @@
         <uactcard
           v-for="item in activits"
           :key="item.id"
+          :actavatar="item.avatar"
           :actname="item.name"
           :acttime="item.organizeTime"
           :actdesc="item.description"
+          :acactid="item.id"
           :actartid="item.article"
         ></uactcard>
       </div>
