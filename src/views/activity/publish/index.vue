@@ -95,7 +95,7 @@ export default {
         data: formdata,
         headers: { "Content-Type": "multipart/form-data" }
       }).then(res => {
-        this.$refs.md.$img2Url(pos, res);
+        this.$refs.md.$img2Url(pos, res.path);
       });
     },
     savamd(origin) {
