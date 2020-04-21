@@ -35,7 +35,7 @@ import umessage from "@/components/message";
 import { reqMessage } from "@/network";
 
 export default {
-  name: "uminerecmsg",
+  name: "uminesysmsg",
   components: {
     umessage
   },
@@ -61,10 +61,10 @@ export default {
         this.messages = res.list;
         this.ctotal = res.total;
       });
-    },
-    created: function() {
-      this.handlepagechange;
     }
+  },
+  created: function() {
+    this.handlepagechange();
   }
 };
 </script>

@@ -10,6 +10,7 @@
       </div>
       <el-table :data="activities" max-height="420px" border stripe style="width: 100%">
         <el-table-column prop="id" width="50px" label="id"></el-table-column>
+        <el-table-column prop="article" width="50px" label="文章id"></el-table-column>
         <el-table-column prop="name" width="100px" label="名称"></el-table-column>
         <el-table-column prop="organizeTime" :formatter="timeformatter" width="100px" label="时间"></el-table-column>
         <el-table-column prop="description" label="简介"></el-table-column>
@@ -43,9 +44,14 @@ export default {
       return myYear + "-" + myMonth + "-" + myDate;
     },
     handleToDetail(res) {
-      let id = res.id;
+      let acid = res.id;
+      let aid = res.article;
       this.$router.push({
-        path: "/activity/" + id
+        name: "actdetail",
+        params: {
+          id: aid,
+          actid: acid
+        }
       });
     },
     handleDeleteAct(res) {

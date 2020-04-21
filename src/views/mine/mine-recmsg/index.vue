@@ -17,7 +17,7 @@
         :ucreatetime="item.createTime"
       ></umessage>
     </div>
-    <div class="page-msg">
+    <div class="page-msg" v-if="messages!=null">
       <el-pagination
         :total="ctotal"
         :page-size="4"

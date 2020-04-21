@@ -40,7 +40,7 @@
         <div class="img">
           <el-upload
             class="avatar-uploader"
-            action="http://localhost:8082/ucms/file"
+            action="http://localhost:18082/ucms/file"
             :show-file-list="false"
             :on-success="handleUploadOk"
             name="avatar"
@@ -112,13 +112,13 @@ export default {
       let typeName = null;
       switch (typeid) {
         case 1:
-          typeName = "超级用户";
+          typeName = "普通用户";
           break;
         case 2:
           typeName = "管理用户";
           break;
         case 3:
-          typeName = "普通用户";
+          typeName = "超级用户";
           break;
       }
       return typeName;

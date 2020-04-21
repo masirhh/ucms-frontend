@@ -30,7 +30,7 @@
         <div class="act-avatar">
           <el-upload
             class="avatar-uploader"
-            action="http://localhost:8082/ucms/file"
+            action="http://localhost:18082/ucms/file"
             :show-file-list="false"
             :on-success="handleUploadOk"
             name="avatar"

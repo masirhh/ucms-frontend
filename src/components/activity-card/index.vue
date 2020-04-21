@@ -65,7 +65,7 @@ export default {
     reqFileUrl({
       method: "get",
       params: {
-        fileId: this.actartid
+        fileId: this.artavatarid
       }
     }).then(res => {
       this.artavatarurl = res;

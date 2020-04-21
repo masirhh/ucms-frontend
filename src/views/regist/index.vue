@@ -79,10 +79,13 @@ export default {
             nickname: this.unickname
           }
         }).then(res => {
-          if (res.id != null) {
+          if (res != null) {
             this.$alert("恭喜你 注册成功", "注册成功").then(() => {
               this.$router.push("/home");
             });
+          }
+          else{
+            this.$alert("该用户名已经被注册", "注册失败");
           }
         });
       } else {
